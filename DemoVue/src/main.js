@@ -20,47 +20,60 @@ import App from './App'
 //   }
 // })
 // 
-// 
-<template id="vue">
-  <input type="text" v-model="name" />
-  <label v-for="cb in inputs">
-      <input type="checkbox" value="{{cb.value}}" v-model="checkbox" />{{cb.name}}
-  </label>   <br>
-  <div> <!--下面2个是一样的效果-->
-   {{checkbox||json}}<br>
-  {{getCheckBoxes}}<br>
-  </div>
-  <div><!--下面2个是一样的效果-->
-      {{getName}}<br>
-      {{name}}
-  </div>
-</template>
- var inputs = ['JAVA','C#','RUBY'].map(function (el,index) {
-        return {value:index,name:el};
-    });
-    var vm= new Vue({
-        el:'#vue',
-        data:{
-            name:'testName',
-            inputs:inputs,
-            checkbox:['0']
-        },
-        watch:{
-            //检测属性变化
-            'name':function(newValue,oldValue){
-                 console.log('name has changed ',newValue,oldValue);
-            }
-        },
-        computed:{
-            getCheckBoxes:function(){
-                console.log('run getCheckBoxes');
-                return this.checkbox.join(',');
-            },
-            getName:function(){
-                console.log('run getName');
-                this.checkbox.join(',');
-                console.log("getName use checkbox");
-                return this.name;
-            }
-        }
-    });
+
+new Vue({
+  el: '#app',
+  template:`
+  	<div>
+  		<span @click="clk1">点击年龄</span>
+      <span @click="clk2">点击步伐</span>
+  		<App ref="c1"  />
+      <p style="font-size:40">{{}}</p>
+  	</div>
+  `,
+  data:function(){
+  	return {
+  		age:24,
+      step:1
+  	}
+  },
+  computed:{
+  	get
+  },
+  beforeCreate:function(){
+  	console.log('1-beforeCreated');
+  	
+  },
+  created:function(){
+  	console.log('1-created');
+  	
+  },
+
+  beforeMount:function(){
+	console.log('1-beforeMount');
+	
+  },
+  mounted:function(){
+	console.log('1-mounted');
+	
+  },
+  beforeUpdate:function(){
+	console.log('1-beforeUpdate');
+
+  },
+  updated:function(){
+	console.log('1-updated');
+  },
+  components:{
+  	App
+  },
+  methods:{
+  	clk1:function(){
+  		 this.age++;
+  	},
+    clk2:function(){
+       this.step++;
+    }
+  }
+})
+
