@@ -6,7 +6,8 @@
         <li v-for="item in gridData">
            <h2 class="tit">
                         <i class="iconfont icon-iconfonticon05"></i>
-                        <a :href="item.url" v-on:click="jumpUrl">{{item.title}}</a>
+<router-link :to="{path:'detail',params:{id:1}}">{{item.title}}</router-link>
+                        
                     </h2>
                     <div class="entry-meta">
                         <span>
@@ -48,6 +49,7 @@ export default {
             event.preventDefault();
             var targetElem=event.target;
             var href=targetElem.href;
+            alert(href)
             this.$http.get("/inc/20161109015459.inc")
                 .then((response) => {
                     this.$router.go('http://localhost:3333/detail')
