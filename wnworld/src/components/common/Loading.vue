@@ -1,10 +1,8 @@
 <template>
 	<div class="load-box">
-		<div class='loading' v-if='loading'>加载中....<div>
+		<div class='loading' v-if='sharedState.isLoad'>加载中....<div>
 	
-		<div class="error" v-if='error'>
-			发生错误
-		</div>
+		
 	</div>
 </template>
 <style lang="scss">
@@ -24,17 +22,18 @@
 	export default {
 		data(){
 		 	return {
-		 		loading:true,
-		 		error:false
+		 		sharedState:this.$root.sharedState,
+		 		sharedMethod:this.$root.sharedMethod
 		 	}
 		},
 
         created(){
+        	this.sharedState.isLoad=true;
             console.dir("Loading.vue createed");
             
         },
         mounted:function(){
-		 	alert("xxxmounted")
+		 	
 		}
 	}
 </script>

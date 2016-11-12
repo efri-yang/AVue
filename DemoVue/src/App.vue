@@ -1,55 +1,31 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png" @click="alt">
-    1111{{counter}}
-    <sub ref="test2">{{age2}}</sub>
-  </div>
+    <div id="app"> 
+        <p>App isLoad:{{sharedState.isLoad}}</p>
+        <button @click='clk1'>APP.VUE点击改变isLoad</button>
+		<children1></children1> 
+	</div> 
 </template>
-
 <script>
-  export default {
-    props:['counter'],
-    data(){
-      return {
-        age2:30
-      }
+import children1 from './components/children1'
+export default {
+    data:function(){
+    	return {
+    		sharedState:this.$root.sharedState,
+            sharedMethod:this.$root.sharedMethod
+    	}	
     },
-    beforeCreate:function(){
-    console.log('  2-beforeCreated');
-  },
-  created:function(){
-    console.log('  2-created');
-  },
-  beforeCompile:function(){
-    console.log('  2-beforeCompile');
-  },
-  beforeMount:function(){
-  console.log('  2-beforeMount');
-  },
-  mounted:function(){
-  console.log('  2-mounted');
-  },
-  beforeUpdate:function(){
-  console.log('  2-beforeUpdate');
-  },
-  updated:function(){
-    console.log('  2-updated');
-  },
-  methods:{
-    alt:function(){
-
+    created:function(){
+        
+    },
+    methods:{
+        clk1:function(){
+            this.sharedMethod.loadToggleAction();
+            alert(this.sharedState.isLoad)
+        }
+    },
+    components:{
+    	children1
     }
-  }
-  }
-</script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    
 }
-</style>
+</script>

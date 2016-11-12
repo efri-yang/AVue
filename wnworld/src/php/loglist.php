@@ -6,7 +6,9 @@ header('Access-Control-Allow-Origin:*');
 header('Access-Control-Allow-Methods:GET,POST,PUT');
 header('Access-Control-Allow-Headers:x-requested-with,content-type');
 
-
+for($i=0;$i<=10000000;$i++){
+	$b=$i;
+}
 $list=array(
 array("title"=>"标题01",'time'=>'2015-01-1','tag'=>'工具','author'=>'散崖','desc'=>'描述01！','url'=>' 
 

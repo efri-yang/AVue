@@ -27,19 +27,21 @@
 export default {
     data(){
         return{
-            loading:true,
-            error:false,
-            gridData:[]
+            gridData:[],
+            sharedState:this.$root.sharedState,
+            sharedMethod:this.$root.sharedMethod
         }
     },
     created: function() {
-        this.getData()
+        this.getData();
+        this.sharedState.isLoad=true;
     },
     methods: {
         getData() {
             this.$http.get('http://192.168.50.173:8000/AMyProject/AVue/wnworld/src/php/loglist.php')
                 .then((response) => {
                     this.gridData=JSON.parse(response.data);
+                    this.sharedState.isLoad=false;
                 })
         },
         jumpUrl:function(event){
@@ -48,10 +50,10 @@ export default {
             var href=targetElem.href;
             this.$http.get("/inc/20161109015459.inc")
                 .then((response) => {
-                    alert(response.data)
+                    this.$router.go('http://localhost:3333/detail')
                 }).catch(function(response) {
                     //错误
-                    alert("xxx")
+                    alert("错误")
                 })
             
         }

@@ -2,7 +2,9 @@
 	<div class="wn-container clearfix wn-container-pt">
     	<div class="box-main">
             <transition name="fade" mode="out-in">
-    			<router-view></router-view>
+                <keep-alive>
+    			    <router-view></router-view>
+                </keep-alive>
             </transition>
     	</div>
     	<div class="sidebar">

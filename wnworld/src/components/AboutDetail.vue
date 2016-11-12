@@ -2,7 +2,6 @@
 	<div class='test-box'>关于散崖asdfasdfsafasdf
 		
 	</div>
-
 </template>
 <style lang='scss'>
 	.test-box{

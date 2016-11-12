@@ -18,7 +18,30 @@ Vue.use(VueResource)
 // Route components will be rendered inside <router-view>.
 Vue.http.options.emulateJSON = true
 
+
+var store = {
+  debug: true,
+  state: {
+    isLoad: false
+  },
+  methods:{
+    loadToggleAction () {
+      store.state.isLoad= store.state.isLoad ? false : true;
+    }
+  }
+}
+
+
+
+
+
 var vm=new Vue({
   router:RouterConfig,
+  data:function(){
+      return {
+          sharedState:store.state,
+          sharedMethod:store.methods
+      }
+  },
   render: h => h(App),
 }).$mount('#app')

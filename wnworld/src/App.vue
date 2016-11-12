@@ -25,7 +25,7 @@ export default {
     },
     watch: {
         '$route':function(){
-            console.dir(this.$paras)
+            
         }
     }
 }
